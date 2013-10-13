@@ -19,14 +19,39 @@ Usage
 	
 	//set things to learn, array of arrays
 	jarvis.learn([
+		// 1st parameter is a the command (string/regex)
+		// 2nd parameter is the function to execute
 		["show me :name", function(name){
 			console.log('name');
 			jarvis.speak('clear ' + name);
-		}],
-		["hello :name", function(name){
-			jarvis.speak("Hello "+name+". This is Jarvis.");
-		}],
+		}]
 	]);
+	
+	//set name, if you don't want the name jarvis
+	jarvis.setName('Raven');
+	
+	// if you want to require the name for every command
+	// e.g. command "show me" will only match to "Jarvis show me"
+	// defaults to false
+	jarvis.reqname(true);
+	
+	// onrecognize will give you the recognized speech
+	jarvis.onrecognize = function(text){
+		// do what you want ...
+	};
+	
+	// onnomatch will be triggered if the text didn't match any of commands
+	jarvis.onnomatch = function(text){
+		// do what you want ...
+	};
+	
+	// debug if you want to debug things
+	// defaults to false
+	jarvis.debug = true;
+	
+	// speak commands jarvis to say things
+	// has a limit of 100 characters
+	jarvis.speak = true;
 	
 	//wake up jarvis
 	jarvis.start();

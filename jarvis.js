@@ -36,8 +36,8 @@
 		name : "Jarvis",
 		cmds : [],
 		lang : "en-US",
-		debug : !0,
-		reqname : !0,
+		debug : !1,
+		reqname : !1,
 		continuous : !0,
 		maxAlternatives : 5,
 		learn : function(cmds){
@@ -50,7 +50,8 @@
 						console.log('recognized : ' + g);
 					}
 					for(var l=0, m=this.cmds.length; l < m; l+=1){
-						var x = this.cmds[l][0].toRegExp().exec(g);
+						var x = ((this.reqname ? this.name+' ' : '('+this.reqname+') ')+this.cmds[l][0]).toRegExp().exec(g);
+						console.log(((this.reqname ? this.name+' ' : '')+this.cmds[l][0]).toRegExp());
 						if(x){
 							this.cmds[l][1].apply(this,x.slice(1));
 							if(this.debug){
@@ -60,7 +61,7 @@
 						}
 					}
 					if(l!=m) break;
-					this.onnomatch&&this.onnomatch(j[i]);
+					this.onnomatch&&this.onnomatch(g);
 					if(this.debug){
 						console.log('match not found');
 					}
@@ -78,9 +79,6 @@
 				throw new Error("Please refresh. X(");
 			}
 			throw new Error("Unknown error : " + e.error);
-		},
-		onend : function(){
-			// this.continuous&&this.start();
 		},
 		setLanguage : function(l){
 			this.lang = l;
