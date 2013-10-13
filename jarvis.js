@@ -1,4 +1,4 @@
-/**	Jarvis
+/**	Point Jarvis
  *	version : 1.0.0
  *	author  : Raven Lagrimas | rjlagrimas08@gmail.com
  *	license : MIT
@@ -14,12 +14,22 @@
 			root.oSpeechRecognition ||
 			root.SpeechRecognition;
 	
-	if(!j){
-		throw new Error("Speech Recognition is not supported.");
-	}
+	if(!j) throw new Error("Speech Recognition is not supported.");
 	
 	String.prototype.trim = function () {
 		return this.replace(/^\s+|\s+$/g, "").replace(/\s{2,}/g, " ");
+	};
+	
+	String.prototype.toRegExp = function() {
+		return new RegExp('^' +
+							this.replace(/[\-{}\[\]+?.,\\\^$|#]/g, '\\$&')
+							.replace(/\s*\((.*?)\)\s*/g, '(?:$1)?')
+							.replace(/(\(\?)?:\w+/g, function(match, optional) {
+								return optional ? match : '([^\\s]+)';
+							})
+							.replace(/\*\w+/g, '(.*?)')
+							.replace(/(\(\?:[^)]+\))\?/g, '\\s*$1?\\s*')
+						+ '$', 'i');
 	};
 	
 	var upgrade = {
@@ -41,8 +51,9 @@
 					}
 					for(var l=0, m=this.cmds.length; l < m; l+=1){
 						// todo : check if name is called, check if name is reqd
-						if(g == this.cmds[l][0].trim()){
-							this.cmds[l][1].call();
+						var x = this.cmds[l][0].toRegExp().exec(g);
+						if(x){
+							this.cmds[l][1].apply(this,x.slice(1));
 							if(this.debug){
 								console.log('match found');
 							}
@@ -67,7 +78,7 @@
 			throw new Error("Unknown error : " + e.error);
 		},
 		onend : function(){
-			this.continuous&&this.start();
+			// this.continuous&&this.start();
 		},
 		setLanguage : function(l){
 			this.lang = l;
@@ -82,6 +93,12 @@
 			this.voicerssKey = k;
 		},
 		speak : function(t){
+			if(typeof t !== "string"){
+				throw new Error('Jarvis cannot speak other datatype, strings only.');
+			}
+			if(t.length > 100){
+				throw new Error('Sorry but Jarvis is limited to speaking up to 100 characters only.');
+			}
 			if(!this.voicerssKey){
 				throw new Error("Voice Rss Key is missing. You can get it from http://www.voicerss.org/");
 			}
@@ -96,8 +113,11 @@
 				spkr = document.getElementById("_jarvis");
 			}
 			
-			var link = 'http://api.voicerss.org/?key='+this.voicerssKey+'&language='+this.lang+'&src='+t;
-			document.getElementById("_jarvis").src = link + "&rnd=" + Math.random();
+			t = t.toLowerCase().replace(/\./g,' ').trim();
+			
+			// we'll use Google translate for the voice hoping that they won't take it down
+			// if you happen to find a TTS API that sounds like jarvis, inform me ASAP
+			document.getElementById("_jarvis").src = 'http://api.voicerss.org/?key='+this.voicerssKey+'&language='+this.lang+'&src='+encodeURIComponent(t);
 		}
 	};
 
