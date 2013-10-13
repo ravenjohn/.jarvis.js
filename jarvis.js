@@ -50,7 +50,6 @@
 						console.log('recognized : ' + g);
 					}
 					for(var l=0, m=this.cmds.length; l < m; l+=1){
-						// todo : check if name is called, check if name is reqd
 						var x = this.cmds[l][0].toRegExp().exec(g);
 						if(x){
 							this.cmds[l][1].apply(this,x.slice(1));
@@ -74,6 +73,9 @@
 			}
 			if(e.error == "not-allowed"){
 				throw new Error("Jarvis was denied. X(");
+			}
+			if(e.error == "no-speech"){
+				throw new Error("Please refresh. X(");
 			}
 			throw new Error("Unknown error : " + e.error);
 		},
