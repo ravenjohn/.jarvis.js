@@ -1,0 +1,14 @@
+<script src="jarvis.js"></script>
+<script>
+	jarvis.setVoiceKey('814690c9d02c4c15be28146ee9f6ac27');
+	jarvis.learn([
+		["clear", function(){
+			console.clear();
+			jarvis.speak('clear');
+		}],
+		["hello", function(){
+			jarvis.speak("Hello Raven. This is Jarvis.");
+		}],
+	]);
+	jarvis.start();
+</script>
