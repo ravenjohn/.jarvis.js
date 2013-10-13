@@ -51,7 +51,6 @@
 					}
 					for(var l=0, m=this.cmds.length; l < m; l+=1){
 						var x = ((this.reqname ? this.name+' ' : '('+this.reqname+') ')+this.cmds[l][0]).toRegExp().exec(g);
-						console.log(((this.reqname ? this.name+' ' : '')+this.cmds[l][0]).toRegExp());
 						if(x){
 							this.cmds[l][1].apply(this,x.slice(1));
 							if(this.debug){
