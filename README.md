@@ -19,7 +19,7 @@ Usage
 	
 	//set things to learn, array of arrays
 	jarvis.learn([
-		// 1st parameter is a the command (string/regex)
+		// 1st parameter is the command (string/regex)
 		// 2nd parameter is the function to execute
 		["show me :name", function(name){
 			console.log('name');
@@ -55,6 +55,9 @@ Usage
 	
 	//wake up jarvis
 	jarvis.start();
+	
+	//put jarvis to sleep
+	jarvis.stop();
 </script>
 ````
 
