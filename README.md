@@ -67,6 +67,15 @@ Author
 ------
 Raven Lagrimas | rjlagrimas08@gmail.com
 
+To Do
+------
+1. Documentation the code.
+2. Minify.
+3. Bower support.
+4. Demo page.
+5. Improve TTS and STT.
+6. Be popular.
+7. Stay Awesome.
 
 License
 -------
