@@ -1,10 +1,51 @@
-<script src="jarvis.js"></script>
-<script>
-	jarvis.setVoiceKey('814690c9d02c4c15be28146ee9f6ac27');
-	jarvis.learn([
-		["say hello to :name", function(name){
-			jarvis.speak("Hello "+name+" This is Jarvis");
-		}],
-	]);
-	jarvis.start();
-</script>
+<!doctype html>
+	<head>
+		<title>Point Jarvis</title>
+		<link rel="shortcut icon" href="favicon.png">
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<div id="home">
+			<div id="inner-home">
+				<img src="img/logo_logotype_glow.png" alt="Point Jarvis Logo"/>
+				<p>Point Jarvis is a free tiny JavaScript library that acts like IronMan's Jarvis. It uses browser embedded speech recognition and www.voicerss.org's text to speech API to bring you a part of Jarvis.</p>
+				<button id="demo-button">Launch Demo</button>
+			</div>
+		</div>
+		<div id="why">
+			<div id="inner-why">
+				<span class="title">Why .jarvis.js?</span>
+				<br /><br /><br />
+				<img src="img/logo_white.png" alt="Point Jarvis Logo"/>
+				Why jarvis etc.
+				Why jarvis etc.
+				Why jarvis etc.
+			</div>
+		</div>
+		<footer>
+			Link Link Link Link 
+		</footer>
+		<script src="//code.jquery.com/jquery.js"></script>
+		<script src="jarvis.min.js"></script>
+		<script>
+			jarvis.setVoiceKey('814690c9d02c4c15be28146ee9f6ac27');
+			jarvis.learn([
+				["say hello to :name", function(name){
+					jarvis.speak("Hello "+name+" This is Jarvis");
+				}],
+			]);
+			$('#demo-button').click(function(){
+				jarvis.start();
+			});
+			$divs = $('#home, #why');
+			$inners = $('#inner-home, #inner-why');
+			window.onresize = function(){
+				var size = (window.innerHeight > window.innerWidth ? window.innerHeight : window.innerWidth);
+				$divs.css('height',window.innerHeight);
+				$divs.css('background-size', size+'px '+size+'px');
+				$inners.css('top', ((window.innerHeight/2)-($inners.height()/2))+'px');
+			};
+			window.onresize();
+		</script>
+	</body>
+</html>
