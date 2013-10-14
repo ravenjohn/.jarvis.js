@@ -99,6 +99,22 @@
 				$('#demo-button').fadeIn();
 				$('#demo-button').html('Try Again');
 			};
+			jarvis.onerror = function(e){
+				if(e.error == "not-allowed"){
+					$('#home-p').html("Jarvis was denied. X( Please allow Jarvis to use your speaker. Try checking the camera icon on the right side bar of your address bar");
+					jarvis.speak("I was denied. Please allow me to use your speaker.");
+				}
+				else if(e.error == "network"){
+					$('#home-p').html("Something is wrong with your network. Try refreshing the page.");
+					jarvis.speak("Something is wrong with your network. Try refreshing the page.");
+				}
+				else if(e.error == "network"){
+					$('#home-p').html("Something went wrong. Try refreshing the page. Error on "+e.error);
+					jarvis.speak("Something went wrong. Try refreshing the page. Error on "+e.error);
+				}
+				$('#demo-button').fadeIn();
+				$('#demo-button').html('Try Again');
+			};
 			$('#demo-button').click(function(){
 				jarvis.start();
 				$('#home-p').html("Please allow us to use your microphones.");
