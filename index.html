@@ -41,6 +41,8 @@
 			<br /><br />
 			<p>Come and visit me on <a href="//github.com/ravenjohn/.jarvis.js" target="_blank">Github</a> to get the latest version of Point Jarvis. Don't forget to like or leave a comment.</p>
 			<br /><br />
+			<p id="thnks"><small>A big thanks to <a href="mailto:nicolettemanas@gmail.com">Jean Manas</a> for designing this site. P.S. This is my girlfriend, don't mess with her.</small></p>
+			<br /><br />
 			<a href="mailto:rjlagrimas08@gmail.com" target="_blank"><img src="img/insidepage_email_icon.png"></a>
 			<a href="//facebook.com/ven.lagrimas" target="_blank"><img src="img/insidepage_facebook_icon.png"></a>
 			<a href="//twitter.com/ravenlagrimas" target="_blank"><img src="img/insidepage_twitter_icon.png"></a>
@@ -92,12 +94,6 @@
 				$('#demo-button').fadeOut();
 				$('#home-p').html("Let's get started. Pump up your speakers or put in your earplugs and say 'Hello Jarvis'");
 				jarvis.speak("Let's get started. Pump up your speakers or put in your earplugs and say 'Hello Jarvis");
-			};
-			jarvis.onend = function(){
-				$('#home-p').html("Something went wrong. Speech Recognition was aborted. Would you like to try again?");
-				jarvis.speak("Something went wrong. Speech Recognition was aborted. Would you like to try again?");
-				$('#demo-button').fadeIn();
-				$('#demo-button').html('Try Again');
 			};
 			jarvis.onerror = function(e){
 				if(e.error == "not-allowed"){
