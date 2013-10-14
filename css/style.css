@@ -72,6 +72,5 @@ footer{
 	background-color: #3e3e3e;
 }
 #thnks{
-	position: fixed;
-	bottom: 0;
+	font-size: .8em;
 }
