@@ -23,7 +23,7 @@
 		<div id="home">
 			<div id="inner-home">
 				<img src="img/logo_logotype_glow.png" alt="Point Jarvis Logo"/>
-				<p>Point Jarvis is a free tiny JavaScript library that acts like IronMan's Jarvis. It uses browser embedded speech recognition and www.voicerss.org's text to speech API to bring you a part of Jarvis.</p>
+				<p id="home-p">Point Jarvis is a free tiny JavaScript library that acts like IronMan's Jarvis. It uses browser embedded speech recognition and www.voicerss.org's text to speech API to bring you a part of Jarvis.</p>
 				<button id="demo-button">Launch Demo</button>
 			</div>
 		</div>
@@ -31,42 +31,87 @@
 			<div id="inner-why">
 				<span class="title">Why .jarvis.js?</span>
 				<br /><br /><br />
-				<img src="img/logo_white.png" alt="Point Jarvis Logo"/>
-				Why jarvis etc.
-				Why jarvis etc.
-				Why jarvis etc.
+				<img src="img/why_jarvis.png" alt="Why Jarvis?"/>
+				<br />
 			</div>
 		</div>
 		<footer>
+			<br />
 			<span class="title">Game on.</span>
-			<br />
-			<a href="mailto:rjlagrimas08@gmail.com"><img src="img/insidepage_email_icon.png"></a>
-			<a href="//facebook.com/ven.lagrimas"><img src="img/insidepage_facebook_icon.png"></a>
-			<a href="//twitter.com/ravenlagrimas"><img src="img/insidepage_twitter_icon.png"></a>
-			<br />
+			<br /><br />
+			<p>Come and visit me on <a href="//github.com/ravenjohn/.jarvis.js" target="_blank">Github</a> to get the latest version of Point Jarvis. Don't forget to like or leave a comment.</p>
+			<br /><br />
+			<a href="mailto:rjlagrimas08@gmail.com" target="_blank"><img src="img/insidepage_email_icon.png"></a>
+			<a href="//facebook.com/ven.lagrimas" target="_blank"><img src="img/insidepage_facebook_icon.png"></a>
+			<a href="//twitter.com/ravenlagrimas" target="_blank"><img src="img/insidepage_twitter_icon.png"></a>
+			<br /><br />
 			<div class="fb-like" data-href="http://ravenjohn.github.io/.jarvis.js" data-width="The pixel width of the plugin" data-height="The pixel height of the plugin" data-colorscheme="dark" data-layout="standard" data-action="like" data-show-faces="true" data-send="false"></div>
 			<br />
 			<div class="fb-comments" data-href="http://ravenjohn.github.io/.jarvis.js" data-colorscheme="The color scheme used in the plugin" data-numposts="1" data-width="The pixel width of the plugin"></div>
 		</footer>
 		<script src="//code.jquery.com/jquery.js"></script>
-		<script src="jarvis.min.js"></script>
+		<script src="jarvis.js"></script>
 		<script>
 			jarvis.setVoiceKey('814690c9d02c4c15be28146ee9f6ac27');
 			jarvis.learn([
-				["say hello to :name", function(name){
-					jarvis.speak("Hello "+name+" This is Jarvis");
+				["hello jarvis", function(){
+					jarvis.speak("Good! Let's try more, how about you say your name.");
+					$('#home-p').html("Good! Let's try more, how about you say your name. 'I'm 'your_name''");
 				}],
+				["I'm :name", function(name){
+					$('#home-p').html("Your name is '" + name + "' right? Say yes or no.");
+					jarvis.speak("Your name is '" + name + "' right? Say yes or no.");
+					jarvis._tmp_name = name;
+				}],
+				["yes", function(){
+					jarvis._name = jarvis._tmp_name;
+					delete jarvis._tmp_name;
+					jarvis.speak("Name confirmed! Say 'goodbye'");
+					$('#home-p').html("Name confirmed! Say goodbye.");
+				}],
+				["no", function(name){
+					jarvis._name = jarvis._tmp_name;
+					delete jarvis._tmp_name;
+					jarvis.speak("Say your name again");
+					$('#home-p').html("Say your name again. I'm 'your_name'");
+				}],
+				["good bye", function(name){
+					jarvis.speak("Thank you "+jarvis._name);
+					$('#home-p').html("Thank you "+jarvis._name+"!");
+					$('#demo-button').html('Relaunch demo');
+					$('#demo-button').fadeIn();
+				}]
 			]);
+			jarvis.onnomatch = function(){
+				jarvis.speak('Sorry. I can\' understand you.');
+			};
+			jarvis.onrecognize = function(a){
+				console.log(a);
+			};
+			jarvis.onstart = function(){
+				$('#demo-button').fadeOut();
+				$('#home-p').html("Let's get started. Pump up your speakers or put in your earplugs and say 'Hello Jarvis'");
+				jarvis.speak("Let's get started. Pump up your speakers or put in your earplugs and say 'Hello Jarvis");
+			};
+			jarvis.onend = function(){
+				$('#home-p').html("Something went wring. Speech Recognition was aborted. Would you like to try again?");
+				jarvis.speak("Something went wring. Speech Recognition was aborted. Would you like to try again?");
+				$('#demo-button').fadeIn();
+				$('#demo-button').html('Try Again');
+			};
 			$('#demo-button').click(function(){
 				jarvis.start();
+				$('#home-p').html("Please allow us to use your microphones.");
 			});
 			$divs = $('#home, #why');
-			$inners = $('#inner-home, #inner-why');
+			$innerHome = $('#inner-home');
+			$innerWhy = $('#inner-why');
 			window.onresize = function(){
 				var size = (window.innerHeight > window.innerWidth ? window.innerHeight : window.innerWidth);
 				$divs.css('height',window.innerHeight);
 				$divs.css('background-size', size+'px '+size+'px');
-				$inners.css('top', ((window.innerHeight/2)-($inners.height()/2))+'px');
+				$innerHome.css('top', ((window.innerHeight/2)-($innerHome.height()/2))+'px');
+				$innerWhy.css('top', ((window.innerHeight/2)-($innerWhy.height()/2))+'px');
 			};
 			window.onresize();
 		</script>
