@@ -1,7 +1,7 @@
 .jarvis.js
 ==========
 
-.jarvis.js or Point Jarvis is a simple JavaScript library for speech recognition and text-to-speech using www.voicerss.org's API. Inspired from Tal Ater's annyang.js and Iron Man.
+.jarvis.js or Point Jarvis is a simple JavaScript library for speech recognition and text-to-speech using www.voicerss.org's API. Inspired from Tal Ater's annyang.js and Iron Man. View [demo](http://ravenjohn.github.io/.jarvis.js)
 
 
 Why is the name Point Jarvis?
