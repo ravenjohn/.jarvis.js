@@ -1,9 +1,10 @@
 /**	Point Jarvis
- *	version : 1.0.0
- *	author  : Raven Lagrimas | rjlagrimas08@gmail.com
- *	license : MIT
- *	http://ravenjohn.github.io/jarvis
+ *	@version : 1.0.0
+ *	@author  : Raven Lagrimas | rjlagrimas08@gmail.com
+ *	@license : MIT
+ *	@link	 : http://ravenjohn.github.io/jarvis
  */
+
 (function(root){
 
 	"use strict";

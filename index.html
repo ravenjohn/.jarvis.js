@@ -104,10 +104,6 @@
 					$('#home-p').html("Something is wrong with your network. Try refreshing the page.");
 					jarvis.speak("Something is wrong with your network. Try refreshing the page.");
 				}
-				else if(e.error == "network"){
-					$('#home-p').html("Something went wrong. Try refreshing the page. Error on "+e.error);
-					jarvis.speak("Something went wrong. Try refreshing the page. Error on "+e.error);
-				}
 				$('#demo-button').fadeIn();
 				$('#demo-button').html('Try Again');
 			};
