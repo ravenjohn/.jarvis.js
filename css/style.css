@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'Nexa Bold';
-	src: url('https://github.com/ravenjohn/.jarvis.js/blob/gh-pages/fonts/NEXA_BOLD.otf');
+	src: url('https://github.com/ravenjohn/.jarvis.js/blob/gh-pages/fonts/NEXA_BOLD.otf?raw=true');
 }
 @font-face {
 	font-family: 'Nexa Light';
-	src: url('https://github.com/ravenjohn/.jarvis.js/blob/gh-pages/fonts/NEXA_LIGHT.otf');
+	src: url('https://github.com/ravenjohn/.jarvis.js/blob/gh-pages/fonts/NEXA_LIGHT.otf?raw=true');
 }
 *{
 	font-family: "Nexa Light";
