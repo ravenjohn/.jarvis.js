@@ -3,7 +3,6 @@
 
 .jarvis.js or Point Jarvis is a simple JavaScript library for speech recognition and text-to-speech using www.voicerss.org's API. Inspired from Tal Ater's annyang.js and Iron Man. View [demo](http://ravenjohn.github.io/.jarvis.js)
 
-
 Why is the name Point Jarvis?
 ---
 Because this is just a part of Jarvis. Much like a part of 1: .1 .2 .3 .12312. There you go.
@@ -12,7 +11,8 @@ Because this is just a part of Jarvis. Much like a part of 1: .1 .2 .3 .12312. T
 Usage
 -----
 ````html
-<script src="jarvis.js"></script>
+<!-- [CDN hosted at jsdelivr.net](http://cdn.jsdelivr.net/jarvis.js/1.0.0/jarvis.min.js) -->
+<script src="jarvis.min.js"></script>
 <script>
 	//set your voice key, you can get it from www.voicerss.org
 	jarvis.setVoiceKey('814690c9d02c4c15be28146ee9f6ac27');

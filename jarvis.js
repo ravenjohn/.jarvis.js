@@ -2,7 +2,7 @@
  *	@version : 1.0.0
  *	@author  : Raven Lagrimas | rjlagrimas08@gmail.com
  *	@license : MIT
- *	@link	 : http://ravenjohn.github.io/jarvis
+ *	@link	 : http://ravenjohn.github.io/.jarvis.js
  */
 
 (function(root){
