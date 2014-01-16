@@ -75,7 +75,7 @@ To Do
 4. Demo page.
 5. Improve TTS and STT.
 6. Be popular.
-7. Stay Awesome.
+7. Stay Awesome. :white_check_mark:
 
 License
 -------
