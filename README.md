@@ -61,11 +61,9 @@ Usage
 </script>
 ````
 
-**For more details, send me a message [rjlagrimas08@gmail.com](mailto:rjlagrimas08@gmail.com)
-
 Author
 ------
-Raven Lagrimas | rjlagrimas08@gmail.com
+Raven Lagrimas
 
 To Do
 ------
